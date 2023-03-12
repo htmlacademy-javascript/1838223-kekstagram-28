@@ -1,5 +1,5 @@
-const checkLength = (stringTested, countLetters) => {
-  if (stringTested.length <= countLetters) {
+const checkLength = (stringTested, quantityLetters) => {
+  if (stringTested.length <= quantityLetters) {
     return true;
   }
   return false;
@@ -8,7 +8,7 @@ const checkLength = (stringTested, countLetters) => {
 checkLength('проверяемая строка', 20);
 
 const checkPalindrom = (word) => {
-  for (let i = 0; i < word.length; i++) {
+  for (let i = 0; i < word.length / 2; i++) {
     if (word.at(i) !== word.at(-i - 1)) {
       return false;
     }
@@ -18,24 +18,24 @@ const checkPalindrom = (word) => {
 
 checkPalindrom('топот');
 
-const importNumber = (string) => {
+const extractNumber = (string) => {
   let result = '';
   for (let i = 0; i < string.length; i++) {
-    if (!Number.isNaN(parseInt(string.at(i), 10))) {
+    if (!isNaN(parseInt(string.at(i), 10))) {
       result += string.at(i);
     }
   }
   return parseInt(result, 10);
 };
 
-importNumber('2023 год');
+extractNumber('2023 год');
 
-const addSymbol = (start, min, addString) => {
+const addSymbol = (start, min, additionalString) => {
   const actualPad = min - start.length;
   if (actualPad <= 0) {
     return start;
   }
-  return addString.slice(0, actualPad % addString.length) + addString.repeat(actualPad / addString.length) + start;
+  return additionalString.slice(0, actualPad % additionalString.length) + additionalString.repeat(actualPad / additionalString.length) + start;
 };
 
 addSymbol('1', 2, '0');
